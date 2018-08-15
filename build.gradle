@@ -5,6 +5,9 @@ buildscript {
         jcenter()
         mavenCentral()
         google()
+        maven {
+            url "https://repo.eclipse.org/content/repositories/paho-snapshots/"
+        }
     }
     dependencies {
 	    classpath 'com.android.tools.build:gradle:3.1.4'
@@ -60,7 +63,7 @@ allprojects {
     repositories {
         jcenter()
         maven {
-            url "file://$sdkDir/extras/android/m2repository/"
+            url "https://repo.eclipse.org/content/repositories/paho-snapshots/"
         }
         google()
     }
