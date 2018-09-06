@@ -626,8 +626,6 @@ public class MqttService extends Service implements MqttTraceHandler {
     // create somewhere to buffer received messages until
     // we know that they have been passed to the application
     messageStore = new DatabaseMessageStore(this, this);
-
-    startForeground(9, new Notification());
 	}
 
 
@@ -653,6 +651,7 @@ public class MqttService extends Service implements MqttTraceHandler {
 			this.messageStore.close();
 
 		super.onDestroy();
+		stopForeground(true);
 	}
 
   /**
@@ -677,7 +676,7 @@ public class MqttService extends Service implements MqttTraceHandler {
     // run till explicitly stopped, restart when
     // process restarted
 	registerBroadcastReceivers();
-
+    startForeground(9, new Notification());
     return START_STICKY;
   }
 
